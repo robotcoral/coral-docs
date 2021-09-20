@@ -6,6 +6,14 @@
 Robot Coral
 =======================================
 
-Coming soon!
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   _docfiles/settings.md
+   _docfiles/world.md
+   _docfiles/editor.md
+   _docfiles/titlebar.md
+   _docfiles/corallang.md
 
 Visit `robotcoral.de <https://robotcoral.de>`_ for more information
