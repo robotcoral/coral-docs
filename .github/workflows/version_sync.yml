@@ -7,12 +7,10 @@ on:
   workflow_dispatch:
 
 jobs:
-
   sync_version:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-    
-      - run:
-          echo "I am here"
+
+      - run: echo "I am here"
