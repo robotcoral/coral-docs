@@ -13,4 +13,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: echo "I am here"
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+      
+      - name: Sync version with coral-app
+        run: python3 bumpversion.py
+        
+      - name: Create Release strings
+        id: release_strings
+        run: |
+          echo "RELEASE_TAG=$(cat doc_version.txt)" >> $GITHUB_ENV
+          echo "RELEASE_NAME=Version $(cat doc_version.txt)" >> $GITHUB_ENV
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: ${{ env.RELEASE_NAME }}
