@@ -11,8 +11,6 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.CI_PERSONAL_TOKEN }}
           
       - name: Prettify code
         uses: creyD/prettier_action@v4.0
@@ -37,7 +35,7 @@ jobs:
           pip install -r source/requirements.txt
           
       - name: Install LaTex
-        run: sudo apt-get install -y texlive texlive-lang-german texlive-xetex
+        run: sudo apt-get install -y texlive texlive-lang-german texlive-xetex latexmk 
     
       - name: Build html documentation
         run: make html SPHINXOPTS="-W --keep-going -n"
