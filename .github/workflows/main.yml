@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          
+      - name: install python dependencies
+        run:
+          pip install -r source/requirements.txt
