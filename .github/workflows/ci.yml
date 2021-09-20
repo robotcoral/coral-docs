@@ -16,6 +16,7 @@ jobs:
         uses: creyD/prettier_action@v4.0
         with:
           prettier_options: --write **/*.{md,css}
+          github_token: ${{ secrets.CI_PERSONAL_TOKEN }}
       
   build:
     runs-on: ubuntu-latest
