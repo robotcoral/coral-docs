@@ -16,6 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           token: ${{ secrets.CI_PERSONAL_TOKEN }}
 
       - name: Setup Node.js
