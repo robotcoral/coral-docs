@@ -14,7 +14,7 @@ Editor features include:
 - Autocompletition
 - Automtatic bracket closing
 - Undo/Redo history
-... and much more
+  ... and much more
 
 ## UI
 

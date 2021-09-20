@@ -11,10 +11,10 @@ Coral executes the commands of the program.
 ### Slab
 
 // TODO: formatting
-|                       |     |
+| | |
 | --------------------- | --- |
-| Placeable by program  | ✅   |
-| Placeable in viewport | ✅   |
+| Placeable by program | ✅ |
+| Placeable in viewport | ✅ |
 
 ### Cube
 

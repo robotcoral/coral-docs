@@ -10,12 +10,12 @@ General settings.
 
 The supported themes are described in the table underneath. Each theme changes the style of the UI, gameboard and editor.
 
-|Theme| Description|
-|-|-|
-|Light| A light theme|
-|Dark| A dark theme|
-|Midnight| A black dark theme|
-|System standard| Automatically chooses between "Light" and "Dark" based on your OS settings|
+| Theme           | Description                                                                |
+| --------------- | -------------------------------------------------------------------------- |
+| Light           | A light theme                                                              |
+| Dark            | A dark theme                                                               |
+| Midnight        | A black dark theme                                                         |
+| System standard | Automatically chooses between "Light" and "Dark" based on your OS settings |
 
 ### Language
 
