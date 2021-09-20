@@ -6,17 +6,40 @@ on:
   workflow_dispatch:
 
 jobs:
-
+  prettify:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.CI_PERSONAL_TOKEN }}
+          
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.0
+      
   build:
     runs-on: ubuntu-latest
+    needs: [prettify]
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.CI_PERSONAL_TOKEN }}
       
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           
-      - name: install python dependencies
+      - name: Install python dependencies
         run:
           pip install -r source/requirements.txt
+          
+      - name: Install LaTex
+        run: sudo apt-get install -y texlive texlive-lang-german texlive-xetex
+    
+      - name: Build html documentation
+        run: make html SPHINXOPTS="-W --keep-going -n"
+        
+      - name: Build LaTex documentation
+        run: make latexpdf SPHINXOPTS="-W --keep-going -n"
+        
