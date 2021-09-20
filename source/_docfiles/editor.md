@@ -1,4 +1,5 @@
 # Editor
+
 This chapter covers the editor features.
 
 ## Codemirror 6
