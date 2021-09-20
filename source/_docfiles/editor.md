@@ -1,4 +1,5 @@
 # Editor
+
 This chapter covers the editor features.
 
 ## Codemirror 6
@@ -6,6 +7,7 @@ This chapter covers the editor features.
 The editor itself works using [Codemirror 6](https://codemirror.net/6/).
 
 ### Features
+
 Editor features include:
 
 - Syntax highlighting
