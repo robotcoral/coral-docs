@@ -30,7 +30,8 @@ jobs:
         run: |
           git config --global user.name 'robotcoralci'
           git config --global user.email 'robotcoralci@users.noreply.github.com'
-          git commit -am "chore: run Prettier"
+          git add -A
+          if [ $(git diff --name-only --cached) ]; then git commit -m "chore: run Prettier"; fi          
           git push
 
   build:
