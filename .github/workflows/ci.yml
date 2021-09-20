@@ -35,7 +35,7 @@ jobs:
           pip install -r source/requirements.txt
           
       - name: Install LaTex
-        run: sudo apt-get install -y texlive texlive-lang-german texlive-xetex latexmk 
+        run: sudo apt-get install -y texlive texlive-lang-german texlive-xetex latexmk fonts-freefont-otf
     
       - name: Build html documentation
         run: make html SPHINXOPTS="-W --keep-going -n"
