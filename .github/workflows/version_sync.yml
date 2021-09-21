@@ -42,7 +42,7 @@ jobs:
         run: |
           echo "RELEASE_TAG=$(cat doc_version.txt)" >> $GITHUB_ENV
           echo "RELEASE_NAME=Version $(cat doc_version.txt)" >> $GITHUB_ENV
-          
+
       - name: Build release files
         run: ./build_release.sh
 
