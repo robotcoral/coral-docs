@@ -2,3 +2,5 @@ build
 node_modules
 .vscode
 doc_version.txt
+output
+Robot-Coral-docs*
