@@ -37,7 +37,7 @@ jobs:
           git commit -am "chore: bump version to $(cat doc_version.txt)"
           git push
 
-      - name: Create Release strings
+      - name: Create release strings
         id: release_strings
         run: |
           echo "RELEASE_TAG=$(cat doc_version.txt)" >> $GITHUB_ENV
@@ -46,11 +46,16 @@ jobs:
       - name: Build release files
         run: ./build_release.sh
 
+      - name: Create release file names
+        run: |
+          echo "PDF_FILENAME=Robot-Coral-docs-${{ env.RELEASE_TAG }}.pdf" >> $GITHUB_ENV
+          echo "ZIP_FILENAME=Robot-Coral-docs-${{ env.RELEASE_TAG }}.zip" >> $GITHUB_ENV
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.RELEASE_TAG }}
           name: ${{ env.RELEASE_NAME }}
           files: |
-            "Robot-Coral-docs-${{ env.RELEASE_TAG }}.pdf"
-            "Robot-Coral-docs-${{ env.RELEASE_TAG }}.zip"
+            ${{ env.PDF_FILENAME }}
+            ${{ env.ZIP_FILENAME }}
