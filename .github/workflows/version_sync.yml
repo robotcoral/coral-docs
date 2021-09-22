@@ -15,6 +15,14 @@ jobs:
         with:
           token: ${{ secrets.CI_PERSONAL_TOKEN }}
 
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.PRIVATE_KEY_CI }}
+          passphrase: ${{ secrets.PASSWORD_KEY_CI }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
       - uses: actions/setup-python@v2
         with:
           python-version: "3.x"
@@ -34,7 +42,7 @@ jobs:
         run: |
           git config --global user.name 'robotcoralci'
           git config --global user.email 'robotcoralci@users.noreply.github.com'
-          git commit -am "chore: bump version to $(cat doc_version.txt)"
+          git commit -S -am "chore: bump version to $(cat doc_version.txt)"
           git push
 
       - name: Create release strings
@@ -56,6 +64,7 @@ jobs:
         with:
           tag_name: ${{ env.RELEASE_TAG }}
           name: ${{ env.RELEASE_NAME }}
+          token: ${{ secrets.CI_PERSONAL_TOKEN }}
           files: |
             ${{ env.PDF_FILENAME }}
             ${{ env.ZIP_FILENAME }}
