@@ -34,13 +34,13 @@ jobs:
 
       - name: Install node dependencies
         run: npm ci
-        
+
       - name: Install python dependencies
         run: pip3 install black
 
       - name: Run Prettier
         run: npx prettier --write .
-      
+
       - name: Run Black
         run: python3 -m black .
 
