@@ -51,7 +51,7 @@ jobs:
           git add -A
           echo "Git diff:\n"
           echo $(git diff --name-only --cached)
-          if [ $(git diff --name-only --cached) ]; then git commit -S -m "chore: run Prettier"; fi          
+          if [ $(git diff --name-only --cached) ]; then echo "Committing changes"; git commit -S -m "chore: run Prettier"; fi          
           git push
 
   build:
