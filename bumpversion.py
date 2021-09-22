@@ -11,14 +11,14 @@ def get_version():
     respone = requests.get(
         "https://api.github.com/repos/robotcoral/coral-app/releases/latest"
     ).json()
-    return(respone["tag_name"])
+    return respone["tag_name"]
 
 
 def new_version_greater(new_ver, old_ver):
     new_ver = list(map(int, new_ver.split(".")))
     old_ver = list(map(int, old_ver.split(".")))
     for i in range(0, 3):
-        if(new_ver[i] > old_ver[i]):
+        if new_ver[i] > old_ver[i]:
             return True
 
     return False
@@ -30,7 +30,7 @@ def bump_documentation(version):
         file = f.read()
 
     begin_version_line = file.find("release = '")
-    begin_version = begin_version_line+len("release = '")
+    begin_version = begin_version_line + len("release = '")
     end_version = file.find("'", begin_version)
     env_com_version = file[begin_version:end_version]
 
@@ -39,7 +39,7 @@ def bump_documentation(version):
 
     check_version = new_version_greater(version, env_com_version)
 
-    if(not(check_version)):
+    if not (check_version):
         throw_error("New version is <= old version")
 
     print("> Writing to conf.py")
