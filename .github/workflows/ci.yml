@@ -1,8 +1,6 @@
 name: CI
 
-on:
-  push:
-  workflow_dispatch:
+on: push
 
 jobs:
   format_code:
@@ -11,7 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
           token: ${{ secrets.CI_PERSONAL_TOKEN }}
 
       - uses: actions/setup-python@v2
