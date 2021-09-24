@@ -29,9 +29,9 @@ def bump_documentation(version):
     with open("./source/conf.py", "r") as f:
         file = f.read()
 
-    begin_version_line = file.find("release = '")
-    begin_version = begin_version_line + len("release = '")
-    end_version = file.find("'", begin_version)
+    begin_version_line = file.find('release = "')
+    begin_version = begin_version_line + len('release = "')
+    end_version = file.find('"', begin_version)
     env_com_version = file[begin_version:end_version]
 
     print("Old Version: " + env_com_version)
