@@ -63,7 +63,6 @@ jobs:
         with:
           tag_name: ${{ env.RELEASE_TAG }}
           name: ${{ env.RELEASE_NAME }}
-          token: ${{ secrets.CI_PERSONAL_TOKEN }}
           files: |
             ${{ env.PDF_FILENAME }}
             ${{ env.ZIP_FILENAME }}
