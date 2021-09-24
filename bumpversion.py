@@ -7,6 +7,10 @@ def throw_error(text):
     sys.exit(1)
 
 
+def throw_warning(text):
+    print("⚠️ WARNING: " + text)
+
+
 def get_version():
     respone = requests.get(
         "https://api.github.com/repos/robotcoral/coral-app/releases/latest"
@@ -40,7 +44,10 @@ def bump_documentation(version):
     check_version = new_version_greater(version, env_com_version)
 
     if not (check_version):
-        throw_error("New version is <= old version")
+        throw_warning("New version is <= old version")
+
+        print("✅ SUCCESS - no changes")
+        return
 
     print("> Writing to conf.py")
     with open("./source/conf.py", "w") as f:
